@@ -18,7 +18,7 @@ Go to manage extensions and load the dist folder present in the extension folder
 ```bash
   cd ./server
   npm i
-  npm run dev
+  node ./server.js
 ```
 Note:-To run this you have to also provide your gemini api key in the extension.(I am plannig to remove server and make it serverless so I will be needing your api key. DW it will not get shared with me 😁)
 ## 📁 Project Structure
