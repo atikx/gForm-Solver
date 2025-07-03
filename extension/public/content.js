@@ -1,3 +1,5 @@
+console.log("Content script loaded!");
+
 const showFloatingMessage = (message, type = "info") => {
   const oldMsg = document.querySelector("#gform-solver-loader");
   if (oldMsg) oldMsg.remove();
@@ -113,7 +115,19 @@ const getQuestions = async () => {
       option.innerText.trim()
     );
 
-    questions.push({ question: questionText, options });
+    // Detect question type
+    let type = "unknown";
+    if (card.querySelector('[role="radio"]')) {
+      type = "single-select";
+    } else if (card.querySelector('[role="checkbox"]')) {
+      type = "multi-select";
+    } else if (card.querySelector("textarea")) {
+      type = "paragraph";
+    } else if (card.querySelector('input[type="text"]')) {
+      type = "short-answer";
+    }
+
+    questions.push({ question: questionText, options, type });
   });
 
   showFloatingMessage("🤖 Sending to Gemini AI...");

@@ -8,7 +8,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export const getans = async (questions) => {
   const prompt = `
-You are a helpful assistant. Given an array of MCQ questions with options , return the same array with an added "answer" field in each object.select any one of options that is most appropriate for the question.
+You are a helpful assistant. Given an array of MCQ questions with options , return the same array with an added "answer" field in each object.select the most appropriate answer/answers(if multi-correct) for the question.The questions can be of different types (I have included the type in the array)
 
 Return only valid JSON (not code block, no comments). Here's the input:
 
